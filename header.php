@@ -25,7 +25,7 @@ $header_cta          = lawyer_theme_get_option('header_cta_link', [
     <header id="site-header"
         class="site-header <?php echo is_front_page() ? '' : 'site-header--solid'; ?>"
         data-site-header>
-        <div class="mx-auto flex h-20 max-w-7xl items-center justify-between gap-5 px-6 lg:px-8">
+        <div class="mx-auto flex min-h-20 max-w-7xl flex-wrap items-center justify-between gap-x-5 gap-y-3 px-6 py-3 md:flex-nowrap md:py-0 lg:px-8">
             <a class="group inline-flex items-center gap-3 text-white"
                 href="<?php echo esc_url(home_url('/')); ?>"
                 aria-label="<?php esc_attr_e('Lawyer Theme — Home', 'lawyer-theme'); ?>">
@@ -45,16 +45,26 @@ $header_cta          = lawyer_theme_get_option('header_cta_link', [
                 <?php endif; ?>
             </a>
 
-            <nav class="hidden md:block" aria-label="<?php esc_attr_e('Primary navigation', 'lawyer-theme'); ?>">
+            <nav class="desktop-navigation order-3 block w-full overflow-x-auto md:order-none md:w-auto md:overflow-visible" aria-label="<?php esc_attr_e('Primary navigation', 'lawyer-theme'); ?>">
                 <?php
-                wp_nav_menu([
+                $primary_menu = wp_nav_menu([
                     'theme_location' => 'primary',
                     'container'      => false,
                     'menu_id'        => 'primary-menu',
                     'menu_class'     => 'site-nav',
-                    'fallback_cb'    => 'lawyer_theme_menu_fallback',
+                    'fallback_cb'    => false,
                     'depth'          => 1,
+                    'echo'           => false,
                 ]);
+
+                if ($primary_menu) {
+                    echo wp_kses_post($primary_menu);
+                } else {
+                    lawyer_theme_menu_fallback((object) [
+                        'menu_id'    => 'primary-menu',
+                        'menu_class' => 'site-nav',
+                    ]);
+                }
                 ?>
             </nav>
 
@@ -64,40 +74,9 @@ $header_cta          = lawyer_theme_get_option('header_cta_link', [
                 <?php echo esc_html($header_cta['title']); ?>
             </a>
 
-            <button class="inline-flex size-11 items-center justify-center border border-white/20 text-white transition-colors hover:border-accent hover:text-accent md:hidden"
-                type="button"
-                aria-expanded="false"
-                aria-controls="mobile-menu"
-                aria-label="<?php esc_attr_e('Open navigation', 'lawyer-theme'); ?>"
-                data-menu-toggle>
-                <svg class="size-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-                    <path d="M4 7h16M4 12h16M4 17h16" />
-                </svg>
-            </button>
-        </div>
-
-        <div id="mobile-menu" class="mobile-menu hidden border-t border-white/10 bg-primary px-6 py-6 md:hidden" data-mobile-menu>
-            <nav aria-label="<?php esc_attr_e('Mobile navigation', 'lawyer-theme'); ?>">
-                <?php
-                wp_nav_menu([
-                    'theme_location' => 'primary',
-                    'container'      => false,
-                    'menu_id'        => 'mobile-primary-menu',
-                    'menu_class'     => 'mobile-nav',
-                    'fallback_cb'    => 'lawyer_theme_menu_fallback',
-                    'depth'          => 1,
-                ]);
-                ?>
-            </nav>
-
-            <a class="mt-6 flex justify-center bg-accent px-5 py-3 font-semibold text-primary"
-                href="<?php echo esc_url($header_cta['url']); ?>"
-                target="<?php echo esc_attr($header_cta['target'] ?: '_self'); ?>">
-                <?php echo esc_html($header_cta['title']); ?>
-            </a>
         </div>
     </header>
 
     <?php if (!is_front_page()) : ?>
-        <div class="h-20 bg-primary" aria-hidden="true"></div>
+        <div class="h-32 bg-primary md:h-20" aria-hidden="true"></div>
     <?php endif; ?>
