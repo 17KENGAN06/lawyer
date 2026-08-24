@@ -9,3 +9,56 @@
     --color-neutral-300: #d1d5db;
     --color-neutral-600: #4b5563;
 }
+
+@layer components {
+    .site-header {
+        @apply fixed inset-x-0 top-0 z-50 border-b border-transparent bg-transparent transition-all duration-300;
+    }
+
+    .site-header.is-scrolled,
+    .site-header--solid {
+        @apply border-white/10 bg-primary/95 shadow-lg backdrop-blur-md;
+    }
+
+    .site-nav {
+        @apply flex items-center gap-8 text-sm text-white;
+    }
+
+    .site-nav a {
+        @apply relative block py-2 transition-colors hover:text-accent;
+    }
+
+    .site-nav a::after {
+        content: '';
+        @apply absolute inset-x-0 -bottom-0.5 h-px origin-left scale-x-0 bg-accent transition-transform;
+    }
+
+    .site-nav a:hover::after,
+    .site-nav .current-menu-item > a::after {
+        @apply scale-x-100;
+    }
+
+    .site-nav .current-menu-item > a {
+        @apply text-accent;
+    }
+
+    .mobile-nav {
+        @apply divide-y divide-white/10 text-white;
+    }
+
+    .mobile-nav a {
+        @apply block py-3 transition-colors hover:text-accent;
+    }
+
+    .mobile-nav .current-menu-item > a {
+        @apply text-accent;
+    }
+
+    .footer-nav {
+        @apply space-y-3;
+    }
+
+    .footer-nav a {
+        @apply transition-colors hover:text-accent;
+    }
+}
