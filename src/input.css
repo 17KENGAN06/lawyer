@@ -1,18 +1,23 @@
 @import 'tailwindcss';
 
 @theme static {
-    --color-primary: #17212b;
-    --color-primary-dark: #111922;
-    --color-accent: #b08a57;
-    --color-surface: #ffffff;
-    --color-surface-soft: #f7f5f1;
-    --color-neutral-300: #d1d5db;
-    --color-neutral-600: #4b5563;
+    --color-primary: #101b24;
+    --color-primary-dark: #091118;
+    --color-accent: #c6a15b;
+    --color-accent-light: #dfc48d;
+    --color-surface: #fffdf9;
+    --color-surface-soft: #f4f0e8;
+    --color-neutral-300: #c9c4ba;
+    --color-neutral-600: #62676c;
 }
 
 @layer components {
     .site-header {
         @apply fixed inset-x-0 top-0 z-50 border-b border-transparent bg-transparent transition-all duration-300;
+    }
+
+    .admin-bar .site-header {
+        top: 32px;
     }
 
     .site-header.is-scrolled,
@@ -60,5 +65,18 @@
 
     .footer-nav a {
         @apply transition-colors hover:text-accent;
+    }
+
+    @media (max-width: 782px) {
+        .admin-bar .site-header {
+            top: 46px;
+        }
+    }
+
+    @media (max-width: 600px) {
+        .admin-bar .site-header.is-scrolled,
+        .admin-bar .site-header--solid {
+            top: 0;
+        }
     }
 }
