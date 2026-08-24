@@ -24,6 +24,49 @@ function lawyer_theme_setup()
 
 add_action('after_setup_theme', 'lawyer_theme_setup');
 
+function lawyer_theme_get_option($field_name, $default = '')
+{
+    if (!function_exists('get_field')) {
+        return $default;
+    }
+
+    $value = get_field($field_name, 'option');
+
+    return ($value !== null && $value !== false && $value !== '') ? $value : $default;
+}
+
+function lawyer_theme_acf_options_pages()
+{
+    if (!function_exists('acf_add_options_page')) {
+        return;
+    }
+
+    $parent = acf_add_options_page([
+        'page_title' => __('Theme Settings', 'lawyer-theme'),
+        'menu_title' => __('Theme Settings', 'lawyer-theme'),
+        'menu_slug'  => 'lawyer-theme-settings',
+        'capability' => 'manage_options',
+        'redirect'   => true,
+        'icon_url'   => 'dashicons-admin-customizer',
+    ]);
+
+    acf_add_options_sub_page([
+        'page_title'  => __('Header Settings', 'lawyer-theme'),
+        'menu_title'  => __('Header', 'lawyer-theme'),
+        'menu_slug'   => 'lawyer-header-settings',
+        'parent_slug' => $parent['menu_slug'],
+    ]);
+
+    acf_add_options_sub_page([
+        'page_title'  => __('Footer Settings', 'lawyer-theme'),
+        'menu_title'  => __('Footer', 'lawyer-theme'),
+        'menu_slug'   => 'lawyer-footer-settings',
+        'parent_slug' => $parent['menu_slug'],
+    ]);
+}
+
+add_action('acf/init', 'lawyer_theme_acf_options_pages');
+
 function lawyer_theme_assets()
 {
     wp_enqueue_style(
