@@ -27,9 +27,16 @@ add_action('after_setup_theme', 'lawyer_theme_setup');
 function lawyer_theme_assets()
 {
     wp_enqueue_style(
+        'lawyer-theme-fonts',
+        'https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap',
+        [],
+        null
+    );
+
+    wp_enqueue_style(
         'lawyer-theme-style',
         get_template_directory_uri() . '/assets/css/app.css',
-        [],
+        ['lawyer-theme-fonts'],
         filemtime(get_template_directory() . '/assets/css/app.css')
     );
 

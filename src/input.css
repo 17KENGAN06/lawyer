@@ -1,6 +1,8 @@
 @import 'tailwindcss';
 
 @theme static {
+    --font-sans: 'Manrope', ui-sans-serif, system-ui, sans-serif;
+    --font-serif: 'Cormorant Garamond', Georgia, serif;
     --color-primary: #101b24;
     --color-primary-dark: #091118;
     --color-accent: #c6a15b;
@@ -9,6 +11,22 @@
     --color-surface-soft: #f4f0e8;
     --color-neutral-300: #c9c4ba;
     --color-neutral-600: #62676c;
+}
+
+@layer base {
+    html {
+        @apply font-sans;
+    }
+
+    body {
+        @apply bg-surface text-primary antialiased;
+    }
+
+    h1,
+    h2,
+    h3 {
+        @apply font-serif;
+    }
 }
 
 @layer components {
@@ -26,11 +44,16 @@
     }
 
     .site-nav {
-        @apply flex items-center gap-8 text-sm text-white;
+        @apply flex flex-row flex-nowrap items-center gap-8 whitespace-nowrap text-sm;
     }
 
-    .site-nav a {
+    .site-nav > li {
+        @apply inline-flex shrink-0;
+    }
+
+    .site-nav > li > a {
         @apply relative block py-2 transition-colors hover:text-accent;
+        color: var(--color-surface);
     }
 
     .site-nav a::after {
@@ -43,8 +66,9 @@
         @apply scale-x-100;
     }
 
-    .site-nav .current-menu-item > a {
-        @apply text-accent;
+    .site-nav .current-menu-item > a,
+    .site-nav .current-menu-item > a:hover {
+        color: var(--color-accent);
     }
 
     .mobile-nav {
@@ -53,10 +77,11 @@
 
     .mobile-nav a {
         @apply block py-3 transition-colors hover:text-accent;
+        color: var(--color-surface);
     }
 
     .mobile-nav .current-menu-item > a {
-        @apply text-accent;
+        color: var(--color-accent);
     }
 
     .footer-nav {
