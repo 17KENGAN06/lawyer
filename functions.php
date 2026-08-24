@@ -23,3 +23,15 @@ function lawyer_theme_setup()
 }
 
 add_action('after_setup_theme', 'lawyer_theme_setup');
+
+function lawyer_theme_assets()
+{
+    wp_enqueue_style(
+        'lawyer-theme-style',
+        get_template_directory_uri() . '/assets/css/app.css',
+        [],
+        filemtime(get_template_directory() . '/assets/css/app.css')
+    );
+}
+
+add_action('wp_enqueue_scripts', 'lawyer_theme_assets');
