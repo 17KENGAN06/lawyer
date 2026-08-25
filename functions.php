@@ -17,7 +17,7 @@ function lawyer_theme_setup()
     ]);
 
     register_nav_menus([
-        'primary' => __('Primary Menu', 'lawyer-theme'),
+        'primary' => __('Main Menu', 'lawyer-theme'),
         'footer'  => __('Footer Menu', 'lawyer-theme'),
     ]);
 }
@@ -96,8 +96,14 @@ add_action('wp_enqueue_scripts', 'lawyer_theme_assets');
 
 function lawyer_theme_menu_fallback($args = [])
 {
-    $menu_id    = !empty($args->menu_id) ? $args->menu_id : 'menu-fallback';
-    $menu_class = !empty($args->menu_class) ? $args->menu_class : 'menu';
+    if (is_array($args)) {
+        $menu_id    = !empty($args['menu_id']) ? $args['menu_id'] : 'menu-fallback';
+        $menu_class = !empty($args['menu_class']) ? $args['menu_class'] : 'site-nav';
+    } else {
+        $menu_id    = !empty($args->menu_id) ? $args->menu_id : 'menu-fallback';
+        $menu_class = !empty($args->menu_class) ? $args->menu_class : 'site-nav';
+    }
+
     $links      = [
         __('Home', 'lawyer-theme')           => home_url('/'),
         __('About', 'lawyer-theme')          => home_url('/#about'),

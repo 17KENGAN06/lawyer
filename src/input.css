@@ -141,3 +141,45 @@
 #site-header .desktop-navigation .site-nav > .current-menu-item > a {
     color: var(--color-accent-light) !important;
 }
+
+/* Safety net for WordPress fallback menus and cached header markup. */
+#site-header nav > ul {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    align-items: center !important;
+    gap: 1.5rem !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    list-style: none !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+#site-header nav > ul > li {
+    display: inline-flex !important;
+    flex: 0 0 auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+#site-header nav > ul > li > a {
+    display: block !important;
+    padding-block: 0.5rem !important;
+    color: #ffffff !important;
+    font-family: var(--font-sans) !important;
+    font-size: 0.875rem !important;
+    font-weight: 500 !important;
+    line-height: 1.25rem !important;
+    text-decoration: none !important;
+    white-space: nowrap !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+#site-header nav > ul > li > a:hover,
+#site-header nav > ul > .current-menu-item > a {
+    color: var(--color-accent-light) !important;
+}

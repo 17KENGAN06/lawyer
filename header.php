@@ -1,8 +1,6 @@
 <?php
-$header_logo         = lawyer_theme_get_option('header_logo', 0);
-$header_logo_text    = lawyer_theme_get_option('header_logo_text', 'LAWYER');
-$header_logo_tagline = lawyer_theme_get_option('header_logo_tagline', 'Theme');
-$header_cta          = lawyer_theme_get_option('header_cta_link', [
+$header_logo = lawyer_theme_get_option('header_logo', 0);
+$header_cta  = lawyer_theme_get_option('header_cta_link', [
     'url'    => home_url('/#contact'),
     'title'  => __('Free Consultation', 'lawyer-theme'),
     'target' => '_self',
@@ -26,24 +24,17 @@ $header_cta          = lawyer_theme_get_option('header_cta_link', [
         class="site-header <?php echo is_front_page() ? '' : 'site-header--solid'; ?>"
         data-site-header>
         <div class="mx-auto flex min-h-20 max-w-7xl flex-wrap items-center justify-between gap-x-5 gap-y-3 px-6 py-3 md:flex-nowrap md:py-0 lg:px-8">
-            <a class="group inline-flex items-center gap-3 text-white"
-                href="<?php echo esc_url(home_url('/')); ?>"
-                aria-label="<?php esc_attr_e('Lawyer Theme — Home', 'lawyer-theme'); ?>">
-                <?php if ($header_logo) : ?>
+            <?php if ($header_logo) : ?>
+                <a class="inline-flex items-center"
+                    href="<?php echo esc_url(home_url('/')); ?>"
+                    aria-label="<?php echo esc_attr(sprintf(__('%s — Home', 'lawyer-theme'), get_bloginfo('name'))); ?>">
                     <?php
                     echo wp_get_attachment_image($header_logo, 'full', false, [
                         'class' => 'h-12 w-auto',
                     ]);
                     ?>
-                <?php else : ?>
-                    <span class="flex size-11 items-center justify-center border border-accent text-lg font-semibold text-accent transition-colors group-hover:bg-accent group-hover:text-primary"
-                        aria-hidden="true">LT</span>
-                    <span class="leading-none">
-                        <span class="block font-serif text-xl tracking-[0.12em]"><?php echo esc_html($header_logo_text); ?></span>
-                        <span class="mt-1 block text-[0.6rem] uppercase tracking-[0.42em] text-accent"><?php echo esc_html($header_logo_tagline); ?></span>
-                    </span>
-                <?php endif; ?>
-            </a>
+                </a>
+            <?php endif; ?>
 
             <nav class="desktop-navigation order-3 block w-full overflow-x-auto md:order-none md:w-auto md:overflow-visible" aria-label="<?php esc_attr_e('Primary navigation', 'lawyer-theme'); ?>">
                 <?php
