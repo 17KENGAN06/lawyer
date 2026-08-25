@@ -206,6 +206,14 @@
         @apply absolute inset-0 bg-gradient-to-r from-primary via-primary/90 to-primary/20;
     }
 
+    .practice-hero {
+        @apply relative overflow-hidden bg-primary bg-cover bg-[65%_center] xl:bg-center;
+    }
+
+    .practice-hero-overlay {
+        @apply absolute inset-0 bg-gradient-to-r from-primary via-primary/90 to-primary/15;
+    }
+
     .article-content {
         @apply text-[1.05rem] leading-8 text-neutral-600;
     }
