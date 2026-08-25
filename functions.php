@@ -35,6 +35,29 @@ function lawyer_theme_get_option($field_name, $default = '')
     return ($value !== null && $value !== false && $value !== '') ? $value : $default;
 }
 
+function lawyer_theme_normalize_link($value, $default = [])
+{
+    $default = wp_parse_args($default, [
+        'url'    => '',
+        'title'  => '',
+        'target' => '_self',
+    ]);
+
+    if (is_string($value)) {
+        $value = ['url' => $value];
+    }
+
+    if (!is_array($value)) {
+        return $default;
+    }
+
+    return [
+        'url'    => !empty($value['url']) ? $value['url'] : $default['url'],
+        'title'  => isset($value['title']) && $value['title'] !== '' ? $value['title'] : $default['title'],
+        'target' => !empty($value['target']) ? $value['target'] : $default['target'],
+    ];
+}
+
 function lawyer_theme_acf_options_pages()
 {
     if (!function_exists('acf_add_options_page')) {

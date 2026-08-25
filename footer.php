@@ -4,11 +4,15 @@ $footer_description      = lawyer_theme_get_option('footer_description', __('Str
 $footer_navigation_title = lawyer_theme_get_option('footer_navigation_title', __('Navigation', 'lawyer-theme'));
 $footer_cta_eyebrow      = lawyer_theme_get_option('footer_cta_eyebrow', __('Need legal guidance?', 'lawyer-theme'));
 $footer_cta_title        = lawyer_theme_get_option('footer_cta_title', __('Let’s discuss your case.', 'lawyer-theme'));
-$footer_cta              = lawyer_theme_get_option('footer_cta_link', [
+$footer_cta_default      = [
     'url'    => home_url('/#contact-form'),
     'title'  => __('Request Consultation', 'lawyer-theme'),
     'target' => '_self',
-]);
+];
+$footer_cta              = lawyer_theme_normalize_link(
+    lawyer_theme_get_option('footer_cta_link', $footer_cta_default),
+    $footer_cta_default
+);
 $footer_copyright        = lawyer_theme_get_option('footer_copyright_text', __('All rights reserved.', 'lawyer-theme'));
 $footer_bottom_text      = lawyer_theme_get_option('footer_bottom_text', __('Professional legal representation with personal attention.', 'lawyer-theme'));
 ?>

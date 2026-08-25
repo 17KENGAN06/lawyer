@@ -1,10 +1,14 @@
 <?php
-$header_logo = lawyer_theme_get_option('header_logo', 0);
-$header_cta  = lawyer_theme_get_option('header_cta_link', [
+$header_logo        = lawyer_theme_get_option('header_logo', 0);
+$header_cta_default = [
     'url'    => home_url('/#contact'),
     'title'  => __('Free Consultation', 'lawyer-theme'),
     'target' => '_self',
-]);
+];
+$header_cta = lawyer_theme_normalize_link(
+    lawyer_theme_get_option('header_cta_link', $header_cta_default),
+    $header_cta_default
+);
 ?>
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>

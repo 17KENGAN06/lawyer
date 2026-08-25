@@ -1,0 +1,68 @@
+[
+    {
+        "key": "group_lawyer_theme_header",
+        "title": "Header",
+        "fields": [
+            {
+                "key": "field_lawyer_theme_header_logo",
+                "label": "Логотип",
+                "name": "header_logo",
+                "aria-label": "",
+                "type": "image",
+                "instructions": "Загрузите изображение логотипа. Ссылка логотипа автоматически ведёт на главную страницу.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "return_format": "id",
+                "library": "all",
+                "min_width": "",
+                "min_height": "",
+                "min_size": "",
+                "max_width": "",
+                "max_height": "",
+                "max_size": "",
+                "mime_types": "",
+                "preview_size": "medium"
+            },
+            {
+                "key": "field_lawyer_theme_header_cta_link",
+                "label": "Кнопка",
+                "name": "header_cta_link",
+                "aria-label": "",
+                "type": "link",
+                "instructions": "Укажите текст кнопки, URL и при необходимости открытие в новой вкладке.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "return_format": "array"
+            }
+        ],
+        "location": [
+            [
+                {
+                    "param": "options_page",
+                    "operator": "==",
+                    "value": "lawyer-header-settings"
+                }
+            ]
+        ],
+        "menu_order": 0,
+        "position": "normal",
+        "style": "default",
+        "label_placement": "top",
+        "instruction_placement": "label",
+        "hide_on_screen": "",
+        "active": true,
+        "description": "Настройки логотипа и кнопки в шапке сайта.",
+        "show_in_rest": 0,
+        "modified": 1787600000
+    }
+]
