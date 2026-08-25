@@ -198,6 +198,14 @@
         @apply absolute inset-0 bg-gradient-to-r from-primary via-primary/90 to-primary/35;
     }
 
+    .about-hero {
+        @apply relative overflow-hidden bg-primary bg-cover bg-[65%_center] xl:bg-center;
+    }
+
+    .about-hero-overlay {
+        @apply absolute inset-0 bg-gradient-to-r from-primary via-primary/90 to-primary/20;
+    }
+
     .article-content {
         @apply text-[1.05rem] leading-8 text-neutral-600;
     }
