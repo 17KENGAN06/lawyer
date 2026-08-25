@@ -165,6 +165,67 @@
         @apply border-accent bg-accent text-primary;
     }
 
+    .article-hero {
+        @apply relative overflow-hidden bg-primary bg-cover bg-center;
+    }
+
+    .article-hero-overlay {
+        @apply absolute inset-0 bg-gradient-to-r from-primary via-primary/90 to-primary/35;
+    }
+
+    .article-content {
+        @apply text-[1.05rem] leading-8 text-neutral-600;
+    }
+
+    .article-content > * + * {
+        @apply mt-6;
+    }
+
+    .article-content h2 {
+        @apply mt-12 font-serif text-4xl font-semibold leading-tight text-primary;
+    }
+
+    .article-content h3 {
+        @apply mt-10 font-serif text-3xl font-semibold leading-tight text-primary;
+    }
+
+    .article-content h4 {
+        @apply mt-8 text-xl font-semibold text-primary;
+    }
+
+    .article-content ul {
+        @apply list-disc space-y-2 pl-6;
+    }
+
+    .article-content ol {
+        @apply list-decimal space-y-2 pl-6;
+    }
+
+    .article-content blockquote {
+        @apply my-10 border-l-4 border-accent bg-white p-7 font-serif text-2xl leading-relaxed text-primary shadow-sm;
+    }
+
+    .article-content a {
+        @apply font-medium text-accent underline underline-offset-4;
+    }
+
+    .article-content img {
+        @apply my-10 h-auto w-full;
+    }
+
+    .article-content figcaption {
+        @apply -mt-7 text-center text-xs text-neutral-600;
+    }
+
+    .article-content table {
+        @apply my-10 w-full border-collapse bg-white text-sm;
+    }
+
+    .article-content th,
+    .article-content td {
+        @apply border border-primary/10 p-4 text-left;
+    }
+
     @media (max-width: 782px) {
         .admin-bar .site-header {
             top: 46px;
