@@ -68,6 +68,15 @@
 
     .mobile-nav {
         @apply divide-y divide-white/10 text-white;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    .mobile-nav > li {
+        display: block;
+        margin: 0;
+        padding: 0;
     }
 
     .mobile-nav a {
@@ -77,6 +86,22 @@
 
     .mobile-nav .current-menu-item > a {
         color: var(--color-accent);
+    }
+
+    .menu-toggle__line {
+        @apply block h-px w-5 bg-white transition duration-300;
+    }
+
+    .menu-toggle[aria-expanded='true'] .menu-toggle__line:first-child {
+        transform: translateY(7px) rotate(45deg);
+    }
+
+    .menu-toggle[aria-expanded='true'] .menu-toggle__line:nth-child(2) {
+        opacity: 0;
+    }
+
+    .menu-toggle[aria-expanded='true'] .menu-toggle__line:last-child {
+        transform: translateY(-7px) rotate(-45deg);
     }
 
     .footer-nav {
@@ -240,85 +265,47 @@
     }
 }
 
-/* Keep WordPress and plugin styles from hiding or restyling the header menu. */
-#site-header .desktop-navigation {
-    display: block !important;
-    visibility: visible !important;
-    opacity: 1 !important;
+/* Keep the WordPress desktop menu stable without overriding mobile breakpoints. */
+@media (min-width: 1280px) {
+    #site-header .desktop-navigation {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+    }
+
+    #site-header .desktop-navigation .site-nav {
+        display: flex !important;
+        flex-direction: row !important;
+        flex-wrap: nowrap !important;
+        align-items: center !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        list-style: none !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+    }
+
+    #site-header .desktop-navigation .site-nav > li {
+        display: inline-flex !important;
+        flex: 0 0 auto !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    #site-header .desktop-navigation .site-nav > li > a {
+        display: block !important;
+        color: #ffffff !important;
+        white-space: nowrap !important;
+    }
+
+    #site-header .desktop-navigation .site-nav > li > a:hover,
+    #site-header .desktop-navigation .site-nav > .current-menu-item > a {
+        color: var(--color-accent-light) !important;
+    }
 }
 
-#site-header .desktop-navigation .site-nav {
-    display: flex !important;
-    flex-direction: row !important;
-    flex-wrap: nowrap !important;
-    align-items: center !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    list-style: none !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-}
-
-#site-header .desktop-navigation .site-nav > li {
-    display: inline-flex !important;
-    flex: 0 0 auto !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-}
-
-#site-header .desktop-navigation .site-nav > li > a {
-    display: block !important;
-    color: #ffffff !important;
-    white-space: nowrap !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-}
-
-#site-header .desktop-navigation .site-nav > li > a:hover,
-#site-header .desktop-navigation .site-nav > .current-menu-item > a {
-    color: var(--color-accent-light) !important;
-}
-
-/* Safety net for WordPress fallback menus and cached header markup. */
-#site-header nav > ul {
-    display: flex !important;
-    flex-direction: row !important;
-    flex-wrap: nowrap !important;
-    align-items: center !important;
-    gap: 1.5rem !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    list-style: none !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-}
-
-#site-header nav > ul > li {
-    display: inline-flex !important;
-    flex: 0 0 auto !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-}
-
-#site-header nav > ul > li > a {
-    display: block !important;
-    padding-block: 0.5rem !important;
-    color: #ffffff !important;
-    font-family: var(--font-sans) !important;
-    font-size: 0.875rem !important;
-    font-weight: 500 !important;
-    line-height: 1.25rem !important;
-    text-decoration: none !important;
-    white-space: nowrap !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-}
-
-#site-header nav > ul > li > a:hover,
-#site-header nav > ul > .current-menu-item > a {
-    color: var(--color-accent-light) !important;
+@media (max-width: 1279px) {
+    #site-header .desktop-navigation {
+        display: none !important;
+    }
 }

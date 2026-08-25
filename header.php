@@ -27,20 +27,20 @@ $header_cta = lawyer_theme_normalize_link(
     <header id="site-header"
         class="site-header <?php echo is_front_page() ? '' : 'site-header--solid'; ?>"
         data-site-header>
-        <div class="mx-auto flex min-h-20 max-w-7xl flex-wrap items-center justify-between gap-x-5 gap-y-3 px-6 py-3 md:flex-nowrap md:py-0 lg:px-8">
+        <div class="mx-auto flex min-h-20 max-w-7xl items-center justify-between gap-4 px-6 py-3 lg:px-8">
             <?php if ($header_logo) : ?>
                 <a class="inline-flex items-center"
                     href="<?php echo esc_url(home_url('/')); ?>"
                     aria-label="<?php echo esc_attr(sprintf(__('%s — Home', 'lawyer-theme'), get_bloginfo('name'))); ?>">
                     <?php
                     echo wp_get_attachment_image($header_logo, 'full', false, [
-                        'class' => 'h-12 w-auto',
+                        'class' => 'h-10 w-auto sm:h-12',
                     ]);
                     ?>
                 </a>
             <?php endif; ?>
 
-            <nav class="desktop-navigation order-3 block w-full overflow-x-auto md:order-none md:w-auto md:overflow-visible" aria-label="<?php esc_attr_e('Primary navigation', 'lawyer-theme'); ?>">
+            <nav class="desktop-navigation hidden xl:block" aria-label="<?php esc_attr_e('Primary navigation', 'lawyer-theme'); ?>">
                 <?php
                 $primary_menu = wp_nav_menu([
                     'theme_location' => 'primary',
@@ -69,9 +69,53 @@ $header_cta = lawyer_theme_normalize_link(
                 <?php echo esc_html($header_cta['title']); ?>
             </a>
 
+            <button class="menu-toggle ml-auto inline-flex size-11 flex-col items-center justify-center gap-1.5 border border-white/20 text-white xl:hidden"
+                type="button"
+                aria-expanded="false"
+                aria-controls="mobile-navigation"
+                aria-label="<?php esc_attr_e('Open navigation', 'lawyer-theme'); ?>"
+                data-menu-toggle>
+                <span class="menu-toggle__line"></span>
+                <span class="menu-toggle__line"></span>
+                <span class="menu-toggle__line"></span>
+            </button>
+
+        </div>
+
+        <div id="mobile-navigation" class="mobile-navigation hidden border-t border-white/10 bg-primary xl:hidden" data-mobile-menu>
+            <div class="mx-auto max-w-7xl px-6 pb-6 pt-2">
+                <nav aria-label="<?php esc_attr_e('Mobile navigation', 'lawyer-theme'); ?>">
+                    <?php
+                    $mobile_menu = wp_nav_menu([
+                        'theme_location' => 'primary',
+                        'container'      => false,
+                        'menu_id'        => 'mobile-menu',
+                        'menu_class'     => 'mobile-nav',
+                        'fallback_cb'    => false,
+                        'depth'          => 1,
+                        'echo'           => false,
+                    ]);
+
+                    if ($mobile_menu) {
+                        echo wp_kses_post($mobile_menu);
+                    } else {
+                        lawyer_theme_menu_fallback((object) [
+                            'menu_id'    => 'mobile-menu',
+                            'menu_class' => 'mobile-nav',
+                        ]);
+                    }
+                    ?>
+                </nav>
+
+                <a class="mt-5 inline-flex w-full items-center justify-center border border-accent bg-accent px-5 py-3 text-sm font-semibold text-primary"
+                    href="<?php echo esc_url($header_cta['url']); ?>"
+                    target="<?php echo esc_attr($header_cta['target'] ?: '_self'); ?>">
+                    <?php echo esc_html($header_cta['title']); ?>
+                </a>
+            </div>
         </div>
     </header>
 
     <?php if (!is_front_page()) : ?>
-        <div class="h-32 bg-primary md:h-20" aria-hidden="true"></div>
+        <div class="h-20 bg-primary" aria-hidden="true"></div>
     <?php endif; ?>
