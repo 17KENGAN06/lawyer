@@ -1,5 +1,5 @@
 <?php
-$footer_logo             = lawyer_theme_get_option('footer_logo', $header_logo ?? 0);
+$footer_logo             = lawyer_theme_get_option('footer_logo', 0);
 $footer_description      = lawyer_theme_get_option('footer_description', __('Strategic legal guidance built on clarity, integrity and a personal commitment to every client.', 'lawyer-theme'));
 $footer_navigation_title = lawyer_theme_get_option('footer_navigation_title', __('Navigation', 'lawyer-theme'));
 $footer_cta_eyebrow      = lawyer_theme_get_option('footer_cta_eyebrow', __('Need legal guidance?', 'lawyer-theme'));
@@ -19,23 +19,17 @@ $footer_bottom_text      = lawyer_theme_get_option('footer_bottom_text', __('Pro
 <footer id="contact" class="bg-primary-dark text-neutral-300">
     <div class="mx-auto grid max-w-7xl gap-12 px-6 py-16 md:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr] lg:px-8 lg:py-20">
         <div class="max-w-md">
-            <a class="inline-flex items-center gap-3 text-white"
-                href="<?php echo esc_url(home_url('/')); ?>"
-                aria-label="<?php esc_attr_e('Lawyer Theme — Home', 'lawyer-theme'); ?>">
-                <?php if ($footer_logo) : ?>
+            <?php if ($footer_logo) : ?>
+                <a class="inline-flex items-center"
+                    href="<?php echo esc_url(home_url('/')); ?>"
+                    aria-label="<?php echo esc_attr(sprintf(__('%s — Home', 'lawyer-theme'), get_bloginfo('name'))); ?>">
                     <?php
                     echo wp_get_attachment_image($footer_logo, 'full', false, [
                         'class' => 'h-12 w-auto',
                     ]);
                     ?>
-                <?php else : ?>
-                    <span class="flex size-11 items-center justify-center border border-accent text-lg font-semibold text-accent" aria-hidden="true">LT</span>
-                    <span class="leading-none">
-                        <span class="block font-serif text-xl tracking-[0.12em]"><?php echo esc_html($header_logo_text ?? 'LAWYER'); ?></span>
-                        <span class="mt-1 block text-[0.6rem] uppercase tracking-[0.42em] text-accent"><?php echo esc_html($header_logo_tagline ?? 'Theme'); ?></span>
-                    </span>
-                <?php endif; ?>
-            </a>
+                </a>
+            <?php endif; ?>
 
             <p class="mt-6 leading-7">
                 <?php echo esc_html($footer_description); ?>

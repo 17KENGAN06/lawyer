@@ -1,0 +1,178 @@
+[
+    {
+        "key": "group_lawyer_theme_footer",
+        "title": "Footer",
+        "fields": [
+            {
+                "key": "field_lawyer_theme_footer_logo",
+                "label": "Логотип",
+                "name": "footer_logo",
+                "aria-label": "",
+                "type": "image",
+                "instructions": "Загрузите логотип футера. Ссылка автоматически ведёт на главную страницу.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "return_format": "id",
+                "library": "all",
+                "min_width": "",
+                "min_height": "",
+                "min_size": "",
+                "max_width": "",
+                "max_height": "",
+                "max_size": "",
+                "mime_types": "",
+                "preview_size": "medium"
+            },
+            {
+                "key": "field_lawyer_theme_footer_description",
+                "label": "Описание",
+                "name": "footer_description",
+                "aria-label": "",
+                "type": "textarea",
+                "instructions": "Краткий текст под логотипом.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Strategic legal guidance built on clarity, integrity and a personal commitment to every client.",
+                "maxlength": "",
+                "rows": 4,
+                "placeholder": "",
+                "new_lines": ""
+            },
+            {
+                "key": "field_lawyer_theme_footer_navigation_title",
+                "label": "Заголовок меню",
+                "name": "footer_navigation_title",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Navigation",
+                "maxlength": "",
+                "placeholder": ""
+            },
+            {
+                "key": "field_lawyer_theme_footer_cta_eyebrow",
+                "label": "Надзаголовок CTA",
+                "name": "footer_cta_eyebrow",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "Небольшой текст над основным заголовком призыва к действию.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Need legal guidance?",
+                "maxlength": "",
+                "placeholder": ""
+            },
+            {
+                "key": "field_lawyer_theme_footer_cta_title",
+                "label": "Заголовок CTA",
+                "name": "footer_cta_title",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Let’s discuss your case.",
+                "maxlength": "",
+                "placeholder": ""
+            },
+            {
+                "key": "field_lawyer_theme_footer_cta_link",
+                "label": "Кнопка CTA",
+                "name": "footer_cta_link",
+                "aria-label": "",
+                "type": "link",
+                "instructions": "Укажите текст кнопки, URL и при необходимости открытие в новой вкладке.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "return_format": "array"
+            },
+            {
+                "key": "field_lawyer_theme_footer_copyright_text",
+                "label": "Текст copyright",
+                "name": "footer_copyright_text",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "Выводится после текущего года и названия сайта.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "All rights reserved.",
+                "maxlength": "",
+                "placeholder": ""
+            },
+            {
+                "key": "field_lawyer_theme_footer_bottom_text",
+                "label": "Нижний текст",
+                "name": "footer_bottom_text",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "Текст в правой части нижней строки футера.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Professional legal representation with personal attention.",
+                "maxlength": "",
+                "placeholder": ""
+            }
+        ],
+        "location": [
+            [
+                {
+                    "param": "options_page",
+                    "operator": "==",
+                    "value": "lawyer-footer-settings"
+                }
+            ]
+        ],
+        "menu_order": 0,
+        "position": "normal",
+        "style": "default",
+        "label_placement": "top",
+        "instruction_placement": "label",
+        "hide_on_screen": "",
+        "active": true,
+        "description": "Настройки содержимого футера сайта.",
+        "show_in_rest": 0,
+        "modified": 1787600000
+    }
+]
