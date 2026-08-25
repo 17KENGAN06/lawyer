@@ -58,6 +58,16 @@ function lawyer_theme_normalize_link($value, $default = [])
     ];
 }
 
+function lawyer_theme_reading_time($post_id = 0)
+{
+    $post_id = $post_id ?: get_the_ID();
+    $content = wp_strip_all_tags((string) get_post_field('post_content', $post_id));
+
+    preg_match_all('/[\p{L}\p{N}]+/u', $content, $words);
+
+    return max(1, (int) ceil(count($words[0]) / 200));
+}
+
 function lawyer_theme_acf_options_pages()
 {
     if (!function_exists('acf_add_options_page')) {
