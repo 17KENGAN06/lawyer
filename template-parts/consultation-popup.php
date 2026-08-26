@@ -17,7 +17,7 @@ if (!$popup_form_shortcode) {
 ?>
 
 <div
-    class="consultation-popup fixed inset-0 z-[100]"
+    class="consultation-popup fixed inset-0 z-[100] overflow-y-auto"
     data-consultation-popup
     data-delay="30000"
     role="dialog"
@@ -25,13 +25,13 @@ if (!$popup_form_shortcode) {
     aria-labelledby="consultation-popup-title"
     hidden>
     <button
-        class="absolute inset-0 size-full cursor-default bg-primary/80 backdrop-blur-sm"
+        class="fixed inset-0 size-full cursor-default bg-primary/80 backdrop-blur-sm"
         type="button"
         aria-label="<?php esc_attr_e('Close consultation form', 'lawyer-theme'); ?>"
         data-popup-close></button>
 
-    <div class="relative flex min-h-full items-center justify-center p-4 sm:p-6">
-        <div class="relative max-h-[calc(100vh-2rem)] w-full max-w-2xl overflow-y-auto border border-white/10 bg-surface shadow-2xl sm:max-h-[calc(100vh-3rem)]">
+    <div class="relative flex min-h-full items-start justify-center px-4 py-8 sm:px-6 sm:py-10 lg:py-12">
+        <div class="relative w-full max-w-2xl border border-white/10 bg-surface shadow-2xl">
             <div class="h-1.5 bg-accent" aria-hidden="true"></div>
 
             <button
