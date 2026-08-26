@@ -58,6 +58,54 @@ function lawyer_theme_normalize_link($value, $default = [])
     ];
 }
 
+/**
+ * Return the form shortcode configured on the Contact page.
+ *
+ * The popup reuses the existing form rather than introducing a second form
+ * handler. As a fallback, the first published Contact Form 7 form is used.
+ *
+ * @return string
+ */
+function lawyer_theme_get_contact_form_shortcode()
+{
+    static $shortcode = null;
+
+    if ($shortcode !== null) {
+        return $shortcode;
+    }
+
+    $shortcode    = '';
+    $contact_page = get_posts([
+        'post_type'      => 'page',
+        'post_status'    => 'publish',
+        'posts_per_page' => 1,
+        'meta_key'       => '_wp_page_template',
+        'meta_value'     => 'page-contact.php',
+        'fields'         => 'ids',
+        'no_found_rows'  => true,
+    ]);
+
+    if ($contact_page && function_exists('get_field')) {
+        $shortcode = trim((string) get_field('contact_form_shortcode', $contact_page[0]));
+    }
+
+    if (!$shortcode && post_type_exists('wpcf7_contact_form')) {
+        $forms = get_posts([
+            'post_type'      => 'wpcf7_contact_form',
+            'post_status'    => 'publish',
+            'posts_per_page' => 1,
+            'fields'         => 'ids',
+            'no_found_rows'  => true,
+        ]);
+
+        if ($forms) {
+            $shortcode = sprintf('[contact-form-7 id="%d"]', (int) $forms[0]);
+        }
+    }
+
+    return (string) apply_filters('lawyer_theme_contact_form_shortcode', $shortcode);
+}
+
 function lawyer_theme_reading_time($post_id = 0)
 {
     $post_id = $post_id ?: get_the_ID();
@@ -123,6 +171,16 @@ function lawyer_theme_assets()
         filemtime(get_template_directory() . '/assets/js/header.js'),
         true
     );
+
+    if (!is_page_template('page-contact.php')) {
+        wp_enqueue_script(
+            'lawyer-theme-consultation-popup',
+            get_template_directory_uri() . '/assets/js/consultation-popup.js',
+            [],
+            filemtime(get_template_directory() . '/assets/js/consultation-popup.js'),
+            true
+        );
+    }
 }
 
 add_action('wp_enqueue_scripts', 'lawyer_theme_assets');

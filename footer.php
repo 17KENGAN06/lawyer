@@ -76,6 +76,8 @@ $footer_bottom_text      = lawyer_theme_get_option('footer_bottom_text', __('Pro
     </div>
 </footer>
 
+<?php get_template_part('template-parts/consultation-popup'); ?>
+
 <?php wp_footer(); ?>
 
 </body>
