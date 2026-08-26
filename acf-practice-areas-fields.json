@@ -1,7 +1,7 @@
 [
     {
         "key": "group_lawyer_theme_practice_areas",
-        "title": "Страница Practice Areas",
+        "title": "Страница услуг",
         "fields": [
             {
                 "key": "field_practice_tab_hero",
@@ -35,7 +35,7 @@
                     "class": "",
                     "id": ""
                 },
-                "default_value": "Practice Areas",
+                "default_value": "Services",
                 "maxlength": "",
                 "placeholder": "",
                 "prepend": "",
@@ -363,7 +363,7 @@
                     "class": "",
                     "id": ""
                 },
-                "default_value": "Legal practice areas",
+                "default_value": "Legal services",
                 "maxlength": "",
                 "placeholder": "",
                 "prepend": "",
@@ -924,7 +924,7 @@
         "instruction_placement": "label",
         "hide_on_screen": "",
         "active": true,
-        "description": "Все секции страницы Practice Areas.",
+        "description": "Все секции страницы услуг.",
         "show_in_rest": 0,
         "modified": 1787600000
     }

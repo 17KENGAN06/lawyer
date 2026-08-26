@@ -1,5 +1,5 @@
 <?php
-/* Template Name: Practice Areas Page */
+/* Template Name: Services Page */
 get_header();
 
 $page_id = get_the_ID();
@@ -38,7 +38,7 @@ $cta_link = lawyer_theme_normalize_link(
 
 $stats = $practice_field('practice_stats', [
     ['value' => '15+', 'label' => __('Years of practice', 'lawyer-theme')],
-    ['value' => '6', 'label' => __('Core practice areas', 'lawyer-theme')],
+    ['value' => '6', 'label' => __('Core legal services', 'lawyer-theme')],
     ['value' => '500+', 'label' => __('Matters handled', 'lawyer-theme')],
     ['value' => '92%', 'label' => __('Favorable outcomes', 'lawyer-theme')],
 ]);
@@ -68,7 +68,7 @@ $steps = $practice_field('practice_steps', [
         <div class="practice-hero-overlay"></div>
         <div class="relative z-10 mx-auto flex min-h-[540px] max-w-7xl items-center px-6 py-20 lg:px-8">
             <div class="max-w-2xl text-white">
-                <p class="home-kicker text-accent-light"><?php echo esc_html($practice_field('practice_hero_eyebrow', __('Practice Areas', 'lawyer-theme'))); ?></p>
+                <p class="home-kicker text-accent-light"><?php echo esc_html($practice_field('practice_hero_eyebrow', __('Services', 'lawyer-theme'))); ?></p>
                 <h1 class="mt-5 text-5xl font-semibold leading-[1.06] md:text-7xl"><?php echo esc_html($practice_field('practice_hero_title', __('Focused legal guidance for life and business', 'lawyer-theme'))); ?></h1>
                 <p class="mt-7 max-w-xl text-lg leading-8 text-neutral-300"><?php echo esc_html($practice_field('practice_hero_text', __('Strategic, practical support across the legal matters that affect your family, property and business.', 'lawyer-theme'))); ?></p>
             </div>
@@ -79,7 +79,7 @@ $steps = $practice_field('practice_steps', [
 
     <section class="border-y border-primary/10 bg-surface-soft"><div class="mx-auto grid max-w-7xl grid-cols-2 px-6 md:grid-cols-4 lg:px-8"><?php foreach ($stats as $stat) : ?><div class="border-primary/10 px-4 py-10 text-center md:border-r md:last:border-r-0"><p class="font-serif text-4xl text-accent"><?php echo esc_html($stat['value'] ?? ''); ?></p><p class="mt-2 text-sm text-neutral-600"><?php echo esc_html($stat['label'] ?? ''); ?></p></div><?php endforeach; ?></div></section>
 
-    <section class="home-section bg-surface-soft"><div class="mx-auto max-w-7xl px-6 lg:px-8"><div class="mx-auto max-w-3xl text-center"><p class="home-kicker"><?php echo esc_html($practice_field('practice_areas_eyebrow', __('Our expertise', 'lawyer-theme'))); ?></p><h2 class="home-title"><?php echo esc_html($practice_field('practice_areas_title', __('Legal practice areas', 'lawyer-theme'))); ?></h2><p class="home-intro"><?php echo esc_html($practice_field('practice_areas_text', __('Comprehensive support with focused experience in each area.', 'lawyer-theme'))); ?></p></div>
+    <section class="home-section bg-surface-soft"><div class="mx-auto max-w-7xl px-6 lg:px-8"><div class="mx-auto max-w-3xl text-center"><p class="home-kicker"><?php echo esc_html($practice_field('practice_areas_eyebrow', __('Our expertise', 'lawyer-theme'))); ?></p><h2 class="home-title"><?php echo esc_html($practice_field('practice_areas_title', __('Legal services', 'lawyer-theme'))); ?></h2><p class="home-intro"><?php echo esc_html($practice_field('practice_areas_text', __('Comprehensive support with focused experience in each area.', 'lawyer-theme'))); ?></p></div>
         <div class="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3"><?php foreach ($areas as $index => $area) : $area_link = lawyer_theme_normalize_link($area['link'] ?? [], ['url' => home_url('/#contact'), 'title' => __('Discuss your matter', 'lawyer-theme'), 'target' => '_self']); ?><article class="home-card group relative overflow-hidden p-8"><span class="absolute right-6 top-4 font-serif text-6xl text-primary/5"><?php echo esc_html(str_pad((string) ($index + 1), 2, '0', STR_PAD_LEFT)); ?></span><span class="text-3xl text-accent"><?php echo esc_html($area['icon'] ?? '◇'); ?></span><h3 class="mt-5 text-2xl font-semibold"><?php echo esc_html($area['title'] ?? ''); ?></h3><p class="mt-3 text-sm leading-6 text-neutral-600"><?php echo esc_html($area['text'] ?? ''); ?></p><?php $bullets = $practice_lines($area['bullets'] ?? ''); ?><?php if ($bullets) : ?><ul class="mt-5 space-y-2 border-t border-primary/10 pt-5 text-sm text-neutral-600"><?php foreach ($bullets as $bullet) : ?><li class="flex gap-2"><span class="text-accent">—</span><span><?php echo esc_html($bullet); ?></span></li><?php endforeach; ?></ul><?php endif; ?><a class="mt-6 inline-flex text-sm font-semibold text-accent" href="<?php echo esc_url($area_link['url']); ?>" target="<?php echo esc_attr($area_link['target']); ?>"><?php echo esc_html($area_link['title']); ?> →</a></article><?php endforeach; ?></div>
     </div></section>
 
